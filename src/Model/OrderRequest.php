@@ -75,6 +75,14 @@ class OrderRequest implements JsonSerializable
      */
     public $boxDelivery;
 
+    /**
+     * Additional services 
+     * defines extra settings available for each order, such as identification checking, 
+     * if the recipient must be the same as the end customer etc.
+     * @var array
+     */
+    public $additionalServices;
+
     public function jsonSerialize()
     {
     	$orderRequest = array(
@@ -91,6 +99,10 @@ class OrderRequest implements JsonSerializable
 
         if (isset($this->productCodes)) {
             $orderRequest['boxDelivery'] = $this->boxDelivery;
+        }
+
+        if (isset($this->additionalServices)) {
+            $orderRequest['additionalServices'] = $this->additionalServices;
         }
 
         return $orderRequest;
