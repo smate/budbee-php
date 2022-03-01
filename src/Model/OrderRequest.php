@@ -30,7 +30,8 @@ class OrderRequest implements JsonSerializable
         'collectionId' => 'int',
         'delivery' => '\Budbee\Model\Contact',
         'productCodes' => 'array',
-        'boxDelivery' => '\Budbee\Model\BoxDelivery'
+        'boxDelivery' => '\Budbee\Model\BoxDelivery',
+        'additionalServices' => 'array'
     );
 
     /**
@@ -101,7 +102,7 @@ class OrderRequest implements JsonSerializable
             $orderRequest['boxDelivery'] = $this->boxDelivery;
         }
 
-        if (isset($this->additionalServices)) {
+        if (isset($this->additionalServices) && $this->additionalServices) {
             $orderRequest['additionalServices'] = $this->additionalServices;
         }
 
